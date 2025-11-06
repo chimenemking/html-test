@@ -1,113 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* global styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Mockup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
 
-        .demo p{
-            margin: 0;
-            padding: 8px;
-            background-color: #9b9ea0;
-        }
-    </style>
+    nav {
+      text-align: right;
+      padding: 10px 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 15px;
+      color: #000;
+    }
+
+    main {
+      margin-top: 100px;
+    }
+
+    form {
+      position: relative;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    #start {
+      width: 500px;
+      height: 30px;
+      border-radius: 30px;
+      border: 1px solid #9b9ea0;
+      background-color: white;
+      padding: 10px;
+      font-size: 20px;
+      color: #3c4043;
+    }
+
+    #demo {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 500px;
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+      text-align: left;
+    }
+
+    #demo p {
+      margin: 0;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #demo p:hover {
+      background-color: #f1f1f1;
+    }
+
+    .buttons {
+      margin-top: 60px;
+    }
+
+    .buttons button {
+      color: #3c4043;
+      background-color: whitesmoke;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      margin: 0 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .languages {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+      align-items: center;
+    }
+
+    .languages a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- heading -->
-    <!-- building the landing page of google -->
-    <!-- html elements -->
-    <!-- attributes -->
 
-    <!-- css  -->
-    <!-- inline css-->
-    <!-- we use style attribute inside the opening tag of html elements to apply CSS properties -->
-    <!-- internal -->
-    <!-- external -->
+  <nav>
+    <a href="#">Gmail</a>
+    <a href="#">Images</a>
+    <a href="#">I</a>
+    <a href="#">P</a>
+  </nav>
 
-    <!-- css structure -->
-    <!-- property:value -->
-    <nav style="text-align: right; margin-right: 20px; padding: 5px;">
-        <a href="#" style="text-decoration: none;">Gmail</a>
-        <a href="#" style="text-decoration: none;">Images</a>
-        <a href="#" style="text-decoration: none">I</a>
-        <a href="#" style="text-decoration: none">P</a>
-    </nav>
-    <main style="text-align: center;">
-        <!-- px is a unit measurement, for scaling up and down -->
-    
-        <img style="width: 272px;" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" />
-      
-        <!-- input element -->
-        <form action="" style="position: relative; display: inline-block;">
-            <!-- the idea is to make the borders rounded -->
-            <input id="start"
-                style="width:500px; height: 30px; border-radius: 30px; border: 1px solid #f8f9fa; color: #3c4043; border-color: #9b9ea0; background-color: white; padding: 10px; font-size: 20px; "
-                type="text">
+  <main>
+    <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" style="width: 272px;" />
 
-                <div id="demo" style="margin-top: 5px; position: absolute; top: 50px; left: 0; width: 200px; border: 1px solid #ccc;">
-                </div>
-            <!-- button element -->
-            <!-- div is basically a container -->
-            <!-- block elements -->
-            <!-- padding(internal spacing) and margin(external spacing)-->
-            <div style="margin-top: 30px;">
-                <button
-                    style="color: #3c4043; background-color: whitesmoke; border:none; border-radius: 6px; padding: 8px;"
-                    type="submit">google search</button>
-                <button
-                    style=" color: #3c4043; background-color: whitesmoke; border:none; border-radius: 6px; padding: 8px;"
-                    type="submit">i'm feeling lucky</button>
-            </div>
-        </form>
+    <form>
+      <input id="start" type="text" placeholder="Search..." />
+      <div id="demo"></div>
 
-        <!-- nesting elements -->
-        <!-- the property to change layout is called display -->
-        <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <p>Google offered in:</p>
-            <!-- anchor elements/tag -->
-            <a style="text-decoration: none;" href="www.google.com">
-                Hausa
-            </a>
+      <div class="buttons">
+        <button type="submit">Google Search</button>
+        <button type="submit">I'm Feeling Lucky</button>
+      </div>
+    </form>
 
-            <a style="text-decoration: none;" href="www.google.com">
-                igbo
-            </a>
-            <a style="text-decoration: none;" href="www.google.com">
-                Ede
-            </a>
-            <a style="text-decoration: none;" href="www.google.com">
-                Nigerian
-            </a>
-            <a style="text-decoration: none;" href="www.google.com">
-                Pidgin
-            </a>
-        </div>
-    </main>
+    <div class="languages">
+      <p>Google offered in:</p>
+      <a href="#">Hausa</a>
+      <a href="#">Igbo</a>
+      <a href="#">Ede</a>
+      <a href="#">Nigerian</a>
+      <a href="#">Pidgin</a>
+    </div>
+  </main>
 
-    <script>
-        // use javascript to add interactivity to the google search autocomplete feature, when a user clicks the search box, it expands to show more options
-        // create a div element and p tags inside the div element
+  <script>
+    const input = document.getElementById("start");
+    const demo = document.getElementById("demo");
 
-        const box = document.getElementById("start");
-        const container = document.getElementById("demo");
+    const getSearches = () => JSON.parse(localStorage.getItem("searches")) || [];
 
-        box.onclick = () => {
-            const item = document.createElement("p")
-            item.textContent = "New suggestions";
-            container.appendChild(item)
+    const saveSearch = (text) => {
+      let searches = getSearches();
+      if (!searches.includes(text)) {
+        searches.unshift(text);
+        if (searches.length > 5) searches.pop();
+        localStorage.setItem("searches", JSON.stringify(searches));
+      }
+    };
 
-        }
-    </script>
+    const showSuggestions = (value) => {
+      const searches = getSearches().filter(item => item.toLowerCase().includes(value.toLowerCase()));
+      demo.innerHTML = "";
+      if (searches.length) {
+        searches.forEach(text => {
+          const p = document.createElement("p");
+          p.textContent = text;
+          p.onclick = () => {
+            input.value = text;
+            demo.style.display = "none";
+          };
+          demo.appendChild(p);
+        });
+        demo.style.display = "block";
+      } else {
+        demo.style.display = "none";
+      }
+    };
+
+    input.addEventListener("input", (e) => {
+      const value = e.target.value.trim();
+      if (value) showSuggestions(value);
+      else demo.style.display = "none";
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const value = input.value.trim();
+        if (value) saveSearch(value);
+        demo.style.display = "none";
+      }
+    });
+
+    input.addEventListener("mouseleave", () => {
+      demo.style.display = "none";
+    });
+  </script>
 
 </body>
-
 </html>
