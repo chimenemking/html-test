@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 150px;
+    }
+
+    #search-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    #search-box {
+      width: 500px;
+      padding: 12px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      outline: none;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      display: none;
+    }
+
+    #suggestions p {
+      margin: 0;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #suggestions p:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+<div id="search-container">
+  <input type="text" id="search-box" placeholder="Search Google..." />
+  <div id="suggestions"></div>
+</div>
+
+<script>
+  const box = document.getElementById("search-box");
+  const container = document.getElementById("suggestions");
+
+  box.onclick = () => {
+    container.innerHTML = ""; // clear old items
+    const items = ["Google Maps", "Google Translate", "Google News", "Google Drive"];
+    items.forEach(text => {
+      const p = document.createElement("p");
+      p.textContent = text;
+      p.onclick = () => {
+        box.value = text;
+        container.style.display = "none";
+      };
+      container.appendChild(p);
+    });
+    container.style.display = "block";
+  };
+
+  document.getElementById("search-container").addEventListener("mouseleave", () => {
+    container.style.display = "none";
+  });
+</script>
+
+</body>
+</html>

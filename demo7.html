@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Google Mockup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<nav style="text-align: right; margin-right: 20px; padding: 5px;">
+  <a href="#" style="text-decoration: none; margin-left: 10px;">Gmail</a>
+  <a href="#" style="text-decoration: none; margin-left: 10px;">Images</a>
+  <a href="#" style="text-decoration: none; margin-left: 10px;">I</a>
+  <a href="#" style="text-decoration: none; margin-left: 10px;">P</a>
+</nav>
+
+<!-- Main Content -->
+<main style="text-align: center; margin-top: 100px;">
+  <img style="width: 272px;" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" />
+
+  <form action="" style="position: relative; display: inline-block; margin-top: 30px;">
+    <input id="start" type="text"
+      style="width: 500px; height: 30px; border-radius: 30px; border: 1px solid #9b9ea0;
+             background-color: white; padding: 10px; font-size: 20px; color: #3c4043;" />
+
+    <div id="demo"
+      style="position: absolute; top: 50px; left: 0; width: 500px; border: 1px solid #ccc;
+             background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: none;">
+    </div>
+
+    <div style="margin-top: 60px;">
+      <button style="color: #3c4043; background-color: whitesmoke; border: none;
+                     border-radius: 6px; padding: 8px;" type="submit">Google Search</button>
+      <button style="color: #3c4043; background-color: whitesmoke; border: none;
+                     border-radius: 6px; padding: 8px;" type="submit">I'm Feeling Lucky</button>
+    </div>
+  </form>
+
+  <div style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 30px;">
+    <p>Google offered in:</p>
+    <a style="text-decoration: none;" href="#">Hausa</a>
+    <a style="text-decoration: none;" href="#">Igbo</a>
+    <a style="text-decoration: none;" href="#">Ede</a>
+    <a style="text-decoration: none;" href="#">Nigerian</a>
+    <a style="text-decoration: none;" href="#">Pidgin</a>
+  </div>
+</main>
+
+<!-- Simple JS Logic -->
+<script>
+  const box = document.getElementById("start");
+  const container = document.getElementById("demo");
+
+  box.onclick = () => {
+    container.innerHTML = ""; // clear previous
+    const item = document.createElement("p");
+    item.textContent = "New suggestions";
+    item.style.margin = "10px";
+    item.style.padding = "10px";
+    item.style.cursor = "pointer";
+    item.style.backgroundColor = "#f1f1f1";
+    item.onmouseover = () => item.style.backgroundColor = "#e0e0e0";
+    item.onmouseout = () => item.style.backgroundColor = "#f1f1f1";
+    container.appendChild(item);
+    container.style.display = "block";
+  };
+
+  box.addEventListener("blur", () => {
+    setTimeout(() => container.style.display = "none", 150);
+  });
+</script>
+
+</body>
+</html>

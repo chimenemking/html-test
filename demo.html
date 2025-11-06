@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo p{
+            margin: 0;
+            padding: 8px;
+            background-color: #9b9ea0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- heading -->
+    <!-- building the landing page of google -->
+    <!-- html elements -->
+    <!-- attributes -->
+
+    <!-- css  -->
+    <!-- inline css-->
+    <!-- we use style attribute inside the opening tag of html elements to apply CSS properties -->
+    <!-- internal -->
+    <!-- external -->
+
+    <!-- css structure -->
+    <!-- property:value -->
+    <nav style="text-align: right; margin-right: 20px; padding: 5px;">
+        <a href="#" style="text-decoration: none;">Gmail</a>
+        <a href="#" style="text-decoration: none;">Images</a>
+        <a href="#" style="text-decoration: none">I</a>
+        <a href="#" style="text-decoration: none">P</a>
+    </nav>
+    <main style="text-align: center;">
+        <!-- px is a unit measurement, for scaling up and down -->
+    
+        <img style="width: 272px;" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" />
+      
+        <!-- input element -->
+        <form action="" style="position: relative; display: inline-block;">
+            <!-- the idea is to make the borders rounded -->
+            <input id="start"
+                style="width:500px; height: 30px; border-radius: 30px; border: 1px solid #f8f9fa; color: #3c4043; border-color: #9b9ea0; background-color: white; padding: 10px; font-size: 20px; "
+                type="text">
+
+                <div id="demo" style="margin-top: 5px; position: absolute; top: 50px; left: 0; width: 200px; border: 1px solid #ccc;">
+                </div>
+            <!-- button element -->
+            <!-- div is basically a container -->
+            <!-- block elements -->
+            <!-- padding(internal spacing) and margin(external spacing)-->
+            <div style="margin-top: 30px;">
+                <button
+                    style="color: #3c4043; background-color: whitesmoke; border:none; border-radius: 6px; padding: 8px;"
+                    type="submit">google search</button>
+                <button
+                    style=" color: #3c4043; background-color: whitesmoke; border:none; border-radius: 6px; padding: 8px;"
+                    type="submit">i'm feeling lucky</button>
+            </div>
+        </form>
+
+        <!-- nesting elements -->
+        <!-- the property to change layout is called display -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <p>Google offered in:</p>
+            <!-- anchor elements/tag -->
+            <a style="text-decoration: none;" href="www.google.com">
+                Hausa
+            </a>
+
+            <a style="text-decoration: none;" href="www.google.com">
+                igbo
+            </a>
+            <a style="text-decoration: none;" href="www.google.com">
+                Ede
+            </a>
+            <a style="text-decoration: none;" href="www.google.com">
+                Nigerian
+            </a>
+            <a style="text-decoration: none;" href="www.google.com">
+                Pidgin
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // use javascript to add interactivity to the google search autocomplete feature, when a user clicks the search box, it expands to show more options
+        // create a div element and p tags inside the div element
+
+        const box = document.getElementById("start");
+        const container = document.getElementById("demo");
+
+        box.onclick = () => {
+            const item = document.createElement("p")
+            item.textContent = "New suggestions";
+            container.appendChild(item)
+
+        }
+    </script>
+
+</body>
+
+</html>
