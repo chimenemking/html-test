@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Search Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #fff;
+    }
+
+    nav {
+      text-align: right;
+      padding: 10px 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 15px;
+      color: #000;
+    }
+
+    main {
+      margin-top: 100px;
+    }
+
+    form {
+      position: relative;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    #search {
+      width: 500px;
+      height: 30px;
+      border-radius: 30px;
+      border: 1px solid #9b9ea0;
+      background-color: white;
+      padding: 10px;
+      font-size: 20px;
+      color: #3c4043;
+    }
+
+    #suggestions {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 500px;
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+      text-align: left;
+      z-index: 10;
+    }
+
+    #suggestions p {
+      margin: 0;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    #suggestions p:hover {
+      background-color: #f1f1f1;
+    }
+
+    #grid {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .grid-item {
+      padding: 10px 20px;
+      background-color: #2a9b08;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#">Gmail</a>
+    <a href="#">Images</a>
+    <a href="#">I</a>
+    <a href="#">P</a>
+  </nav>
+
+  <main>
+    <form id="searchForm">
+      <input id="search" type="text" placeholder="Search countries..." autocomplete="off" />
+      <button type="submit" style="display:none;"></button> <!-- Hidden submit button -->
+      <div id="suggestions"></div>
+    </form>
+
+    <div id="grid"></div>
+  </main>
+
+  <script>
+    const input = document.getElementById("search");
+    const form = document.getElementById("searchForm");
+    const suggestions = document.getElementById("suggestions");
+    const grid = document.getElementById("grid");
+
+    let selectedCountry = null;
+    let gridItems = [];
+
+    // Prevent form submission
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+
+    // Fetch and filter countries as user types
+    input.addEventListener("input", async (e) => {
+      const query = e.target.value.trim();
+      if (!query) return suggestions.style.display = "none";
+
+      const res = await fetch("https://countriesnow.space/api/v0.1/countries");
+      const data = await res.json();
+      const countries = data.data.map(c => c.country);
+
+      const matches = countries.filter(name =>
+        name.toLowerCase().includes(query.toLowerCase())
+      );
+
+      renderSuggestions(matches.slice(0,5));
+
+    });
+
+    // Render suggestions
+    function renderSuggestions(matches) {
+      suggestions.innerHTML = "";
+      matches.forEach(name => {
+        const p = document.createElement("p");
+        p.textContent = name;
+        p.onclick = () => {
+          input.value = name;
+          selectedCountry = name;
+          suggestions.style.display = "none";
+        };
+        suggestions.appendChild(p);
+      });
+      suggestions.style.display = matches.length ? "block" : "none";
+    }
+
+    // Add selected country to grid on Enter
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && selectedCountry) {
+        e.preventDefault(); // prevent form submission
+        addToGrid(selectedCountry);
+        selectedCountry = null;
+        input.value = "";
+        suggestions.style.display = "none";
+      }
+    });
+
+    // Add to grid
+    function addToGrid(name) {
+      if (gridItems.includes(name)) return;
+      gridItems.push(name);
+
+      const div = document.createElement("div");
+      div.textContent = name;
+      div.className = "grid-item";
+      grid.appendChild(div);
+    }
+  </script>
+
+</body>
+</html>

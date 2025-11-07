@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hello, Google Here</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+
+            nav {
+                text-align: right;
+                padding: 10px 20px;
+            }
+
+            nav a {
+                text-decoration: none;
+                margin-left: 15px;
+                color: #000;
+            }
+
+            main {
+                margin-top: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            form {
+                position: relative;
+                display: inline-block;
+                margin-top: 30px;
+            }
+
+            #start {
+                width: 500px;
+                height: 30px;
+                border-radius: 30px;
+                border: 1px solid #9b9ea0;
+                background-color: white;
+                padding: 10px;
+                font-size: 20px;
+                color: #3c4043;
+            }
+
+            #demo {
+                /* position: absolute; */
+                top: 50px;
+                left: 0;
+                width: 500px;
+                border: 1px solid #ccc;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                display: none;
+                text-align: left;
+            }
+
+            #demo p {
+                margin: 0;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            #demo p:hover {
+                background-color: #f1f1f1;
+            }
+
+            .buttons {
+                margin-top: 60px;
+            }
+
+            .buttons button {
+                color: #3c4043;
+                background-color: whitesmoke;
+                border: none;
+                border-radius: 6px;
+                padding: 8px 16px;
+                margin: 0 5px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .languages {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 30px;
+                align-items: center;
+            }
+
+            .languages a {
+                text-decoration: none;
+                color: #000;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#">Gmail</a>
+            <a href="#">Images</a>
+            <a href="#">I</a>
+            <a href="#">P</a>
+        </nav>
+
+        <main>
+            <img
+                style="width: 272px"
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                alt="Google Logo"
+                style="width: 272px"
+            />
+
+            <form>
+                <input id="start" type="text" placeholder="Search..." />
+                <div id="demo"></div>
+
+                <div class="buttons">
+                    <button type="submit">Google Search</button>
+                    <button type="submit">I'm Feeling Lucky</button>
+                </div>
+            </form>
+
+            <div class="languages">
+                <p>Google offered in:</p>
+                <a href="#">Hausa</a>
+                <a href="#">Igbo</a>
+                <a href="#">Ede</a>
+                <a href="#">Nigerian</a>
+                <a href="#">Pidgin</a>
+            </div>
+        </main>
+
+        <script>
+            const input = document.getElementById("start");
+            const demo = document.getElementById("demo");
+
+            const getSearches = () =>
+                JSON.parse(localStorage.getItem("searches")) || [];
+
+            const saveSearch = (text) => {
+                let searches = getSearches();
+                if (!searches.includes(text)) {
+                    searches.unshift(text);
+                    if (searches.length > 5) searches.pop();
+                    localStorage.setItem("searches", JSON.stringify(searches));
+                }
+            };
+
+            const showSuggestions = (value) => {
+                const searches = getSearches().filter((item) =>
+                    item.toLowerCase().includes(value.toLowerCase()),
+                );
+                demo.innerHTML = "";
+                if (searches.length) {
+                    searches.forEach((text) => {
+                        const p = document.createElement("p");
+                        p.textContent = text;
+                        p.onclick = () => {
+                            input.value = text;
+                            demo.style.display = "none";
+                        };
+                        demo.appendChild(p);
+                    });
+                    demo.style.display = "block";
+                } else {
+                    demo.style.display = "none";
+                }
+            };
+
+            input.addEventListener("input", (e) => {
+                const value = e.target.value.trim();
+                if (value) showSuggestions(value);
+                else demo.style.display = "none";
+            });
+
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    const value = input.value.trim();
+                    if (value) saveSearch(value);
+                    demo.style.display = "none";
+                }
+            });
+
+            // input.addEventListener("mouseleave", () => {
+            //   demo.style.display = "none";
+            // });
+        </script>
+    </body>
+</html>
