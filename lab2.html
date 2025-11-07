@@ -106,7 +106,7 @@
     let selectedCountry = null;
     const gridItems = new Set();
 
-    // ✅ Fetch country list ONCE
+    // to Fetch country list ONCE
     async function loadCountries() {
       const res = await fetch("https://countriesnow.space/api/v0.1/countries");
       const data = await res.json();
@@ -116,7 +116,7 @@
     loadCountries();
 
 
-    // ✅ Filter and show suggestions
+    //  to Filter and show suggestions
     searchInput.addEventListener("input", () => {
       const query = searchInput.value.trim().toLowerCase();
       if (!query) return hideSuggestions();
